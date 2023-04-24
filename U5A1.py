@@ -12,7 +12,9 @@ def rgb(r,g,b):
 #empty arrays
 petals = []  #Background related
 petalSpeed = []
-skyColour = []
+skyColourRed = []#rgb vales for sky
+skyColourBlue = []
+skyColourGreen = []
 luffyArm = [] #position of arm
 block = [] #block luffy hits
 text = [] #Text box
@@ -20,10 +22,10 @@ text = [] #Text box
 #background
 #creates gradient effect for sky
 for x in range (0,256):
-    b = 255
-    r = 150 - round(x/2.2)
-    g = round(x/5)
-    screen.create_rectangle(0,x,800,x*3,outline = rgb(r,g,b), fill = rgb(r,g,b))
+    skyColourBlue.append(255)
+    skyColourRed.append(150-round(x/2.2))
+    skyColourGreen.append(round(x/5))
+    screen.create_rectangle(0,x,800,x*3,outline = rgb(skyColourRed[x],skyColourGreen[x],skyColourBlue[x]), fill = rgb(r,g,b))
 screen.create_rectangle(0,500,800,600,fill = "brown" ) #floor
 #Luffy character
 
