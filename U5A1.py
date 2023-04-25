@@ -15,29 +15,78 @@ petalSpeed = []
 skyColourRed = []#rgb vales for sky
 skyColourBlue = []
 skyColourGreen = []
-luffyArm = [] #position of arm
+
+armSpeed = []#Arm move speed
 block = [] #block luffy hits
 text = [] #Text box
 
 #background
-#creates gradient effect for sky
+#creates gradient effect for sky by implementing
 for x in range (0,256):
     skyColourBlue.append(255)
     skyColourRed.append(150-round(x/2.2))
     skyColourGreen.append(round(x/5))
-    screen.create_rectangle(0,x,800,x*3,outline = rgb(skyColourRed[x],skyColourGreen[x],skyColourBlue[x]), fill = rgb(r,g,b))
+    screen.create_rectangle(0,x,800,x*3,outline = rgb(skyColourRed[x],skyColourGreen[x],skyColourBlue[x]), fill = rgb(skyColourRed[x],skyColourGreen[x],skyColourBlue[x]))
+
 screen.create_rectangle(0,500,800,600,fill = "brown" ) #floor
-#Luffy character
 
-#legs
-screen.create_rectangle(20,490,30,440, fill = "black")
-screen.create_rectangle(40,490,50,440, fill = "black")
 
-#body
-screen.create_polygon(15,440,15,380,55,380,55,440,fill = "red",smooth = "true")
-#head
-screen.create_oval(22,380,48,354,fill = "orange")
+y = [] #Arm position
+x = [] 
+arms = []
+#starting values
+for a in range(100):
+    luffyArmPosition = randint(380,460 )
+    y.append(luffyArmPosition)
+    x.append(100)
+    arms.append(0)
+#arm speed
+for b in range(100):
+    a = randint(1,2)
+    armSpeed.append(a) #if values between 1 and 2 to determine going forwards or back
+print(len(y))
+print(len(x))
 
-#back arm
+#initial arm position
+for n in range(100):
+  for c in range(15):
+    arms[c] = screen.create_polygon(x[c],y[c],x[c],y[c]+10,x[c]+100,y[c]+10,x[c]+100,y[c],fill = "black",smooth = "true") #creates the different arms
+
+    #randomizes movement of arms (back and forth)
+    if armSpeed[n] == 1:
+      x[c] -= 50
+    else:
+      x[c] += 50
+    
+  screen.update()
+  sleep(0.1)
+  for c in range(15):
+    screen.delete(arms[c])
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 screen.update()
 screen.mainloop()
