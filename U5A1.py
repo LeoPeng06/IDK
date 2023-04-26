@@ -33,7 +33,7 @@ for x in range (0,256):
     screen.create_rectangle(0,x,800,x*3,outline = rgb(skyColourRed[x],skyColourGreen[x],skyColourBlue[x]), fill = rgb(skyColourRed[x],skyColourGreen[x],skyColourBlue[x]))
 
 #clouds
-for z in range(4): #loops through to create multiple layers of clouds
+for z in range(3): #loops through to create multiple layers of clouds
   for x in range(4):
     for n in range(25):
         cloudx.append(randint(randx1,randx2))
@@ -42,10 +42,10 @@ for z in range(4): #loops through to create multiple layers of clouds
         screen.create_oval(cloudx[n], cloudy[n], cloudx[n]+z, cloudy[n]+z, fill="white", outline="white")
     cloudx.clear()
     cloudy.clear()
-    spacex = randint(150,350)
+    spacex = randint(150,350)#spaces clouds each loop
     randx1 += spacex
     randx2 += spacex
-  spacey = randint(70,120)
+  spacey = randint(70,120)#after creates 4 clouds, changes y value to add layer
   randy1 += spacey
   randy2 += spacey
   randx1 = randint(10,50)
